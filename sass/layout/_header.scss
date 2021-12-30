@@ -1,0 +1,26 @@
+.header {
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
+    url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  padding: 4rem;
+
+  clip-path: polygon(0 0, 0 100%, 100% 75vh, 100% 0);
+
+  display: grid;
+  grid-template-columns: minmax(max-content, 1fr);
+  grid-template-rows: min-content repeat(2, minmax(min-content, 1fr));
+  row-gap: 5rem;
+
+  &__logo {
+    grid-row: 1/2;
+
+    display: block;
+    height: 3.5rem;
+    width: auto;
+  }
+}
