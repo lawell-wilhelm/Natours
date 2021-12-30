@@ -28,7 +28,180 @@ body {
   color: #777;
 }
 
+/* CONTAINER */
 .container {
   display: grid;
   grid-template-rows: 95vh;
+
+  padding: 3rem;
+}
+
+/* HEADER */
+.header {
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(126, 213, 111, 0.8),
+      rgba(40, 180, 133, 0.8)
+    ),
+    url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  padding: 4rem;
+
+  clip-path: polygon(0 0, 0 100%, 100% 75vh, 100% 0);
+
+  display: grid;
+  grid-template-columns: minmax(max-content, 1fr);
+  grid-template-rows: min-content repeat(2, minmax(min-content, 1fr));
+  row-gap: 5rem;
+}
+
+.logo {
+  grid-row: 1/2;
+
+  display: block;
+  height: 3.5rem;
+  width: auto;
+}
+
+.heading-primary {
+  grid-row: 2/3;
+
+  align-self: end;
+  justify-self: center;
+
+  transform: translateY(-10%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-transform: uppercase;
+  color: #fff;
+
+  backface-visibility: hidden;
+}
+
+.heading-primary-main {
+  font-size: 6rem;
+  font-weight: 400;
+  letter-spacing: 3.5rem;
+
+  animation: moveInLeft 1s ease-out;
+}
+
+.heading-primary-sub {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1.55rem;
+
+  animation: moveInRight 1s ease-out;
+}
+
+/* BUTTON */
+.btn:link,
+.btn:visited {
+  grid-row: 3/4;
+  align-self: start;
+  justify-self: center;
+
+  text-decoration: none;
+  text-transform: uppercase;
+
+  /* display: inline-block; */
+  padding: 1.5rem 4rem;
+  border-radius: 10rem;
+
+  transition: all 0.2s;
+
+  position: relative;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.btn::after {
+  content: "";
+
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  transition: all 0.4s;
+}
+
+.btn:hover::after {
+  transform: scale(1.4, 1.6);
+  opacity: 0;
+}
+
+.btn-white {
+  background-color: #fff;
+  color: #777;
+}
+
+.btn-white::after {
+  background-color: #fff;
+}
+
+.btn-animated {
+  animation: moveInUp 0.5s ease-out 0.75s;
+  animation-fill-mode: backwards; /* applies the 0% before the anim starts*/
+}
+
+/* ANIMATION */
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+
+  80% {
+    transform: translateX(1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+
+  80% {
+    transform: translateX(-1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes moveInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
